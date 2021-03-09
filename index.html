@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>  
+</head>
+<body>
+    <div id="app">
+        <h1>Hello {{ userName }}</h1>
+        <input type="text" v-model="userName">
+        <p v-if="userName.length > 9">too long !!!!</p>
+        <button v-on:click="addItem">addItem</button>
+        <button @click="popItem">popItem</button>
+        <ul>
+            <li v-for="todo in todos">
+                {{ todo }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                userName: "scalper",
+                frameworks: ['react', 'vue', 'angular'],
+                todo: []
+            },
+            methods: {
+                addItem() {
+                    this.frameworks.push(this.userName)
+                },
+                popItem() {
+                    this.frameworks.pop()
+                }
+            }
+        });
+    </script>
+</body>
+</html>
